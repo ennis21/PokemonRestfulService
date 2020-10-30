@@ -27,12 +27,14 @@ import org.slf4j.LoggerFactory;
  * 1. Open a new terminal 
  * TO BUILD THE JAR FILE: ./mvnw clean package
  * TO RUN: ./mvnw spring-boot:run
+ * Added to GitHub
  **********************************************
  */
 
  /*
 ************************************************************************
  1.Create a Database and Table using MongoDB
+ 
 ************************************************************************
   */
 
