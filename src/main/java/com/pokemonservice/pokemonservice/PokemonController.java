@@ -1,5 +1,6 @@
 package com.pokemonservice.pokemonservice;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,7 +35,6 @@ import org.slf4j.LoggerFactory;
  /*
 ************************************************************************
  1.Create a Database and Table using MongoDB
- 
 ************************************************************************
   */
 
@@ -57,6 +57,10 @@ private Gson gson = new Gson();
 
 //Hold value of Http status code when making requests
 HttpStatus statuscode = null;
+
+//Create a MondoDB Repository 
+@Autowired
+private PokemonRepository pokemonrepository;
 
 
 
@@ -106,6 +110,7 @@ public String getPokemon(@RequestParam(value="name", defaultValue = "pikachu") S
 
     pokemon.setAbilities(abilities.getAsJsonObject("ability").get("name").getAsString()); //Retreive data for the pokemon ability 
 
+    pokemonrepository.save(pokemon); //Save to the database
     
 
 /*
@@ -113,6 +118,7 @@ Using String.format() allows us to dislay the data on the local host server page
 THe %s checks if the arguement is a null string and passes the arguement if it is
 */
  return String.format(name.toUpperCase() + ", " + "I CHOOSE YOU!: %s", pokemon.toString());
+
 
    
 
