@@ -7,18 +7,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import org.w3c.dom.css.Counter;
 
-import ch.qos.logback.core.net.SyslogOutputStream;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.mongodb.MongoClient; //Import MongoDB Database 
-import com.mongodb.DB;
-import com.mongodb.client.MongoDatabase;  
-import com.mongodb.MongoCredential; 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 
 
@@ -44,9 +37,6 @@ import org.slf4j.LoggerFactory;
 @RestController //Handle all HTTP Requests to API and retreives the data 
 public class PokemonController{
 
-
-//Create Logger to show pokemon information in the console
-private final Logger log = LoggerFactory.getLogger(PokemonController.class);
 
 
 //Retreive data and store in a class using class object 
@@ -110,7 +100,7 @@ public String getPokemon(@RequestParam(value="name", defaultValue = "pikachu") S
 
     pokemon.setAbilities(abilities.getAsJsonObject("ability").get("name").getAsString()); //Retreive data for the pokemon ability 
 
-    pokemonrepository.save(pokemon); //Save to the database
+   // pokemonrepository.save(pokemon); //Save to the database
     
 
 /*
@@ -119,15 +109,10 @@ THe %s checks if the arguement is a null string and passes the arguement if it i
 */
  return String.format(name.toUpperCase() + ", " + "I CHOOSE YOU!: %s", pokemon.toString());
 
-
-   
-
-
-    
 }
 
 
-
+//Create a search endpoint find pokemon in the MongoDB repository
 
 
 

@@ -1,9 +1,7 @@
 package com.pokemonservice.pokemonservice;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.mongodb.MongoClient; //Import MongoDB Database 
-import com.mongodb.DB;
-import com.mongodb.client.MongoDatabase;
+
 
 import org.springframework.data.annotation.Id;
 
@@ -14,7 +12,7 @@ import org.springframework.data.annotation.Id;
 public class PokemonInfo{
 
 @Id //Annotation related to MongoDB
-private String Id = "";
+private String Id = ""; //Id for MongoDB
 private String name = ""; //Pokemon Name 
 private String type = ""; //Pokemon Type 
 private String abilities = ""; //Pokemon Species 
@@ -33,12 +31,6 @@ public PokemonInfo(String name)
 {
     this.name = name;
     numberofpokemon++; //Increment the count of the number of pokemon searched 
-}
-
-//Add stored data into a database 
-public void addToDatabase()
-{
-
 }
 
 public void setName(String name)
